@@ -49,6 +49,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+
+$route['estadios/(:any)'] = 'estadios/ver/$1';
+$route['estadios'] = 'estadios';
+//$routes compara cualquier peticion usando el string wildcard (:any)
+//y pasa los parametro al metodo ver() de la clase Estadios
+//$1 es reemplazado por los parametroz captados por (:any)
+$route['(:any)'] = 'controlador1/ver/$1';
+$route['default_controller'] = 'controlador1/ver';
+
+//Por defecto
+// $route['default_controller'] = 'welcome';
+// $route['404_override'] = '';
+// $route['translate_uri_dashes'] = FALSE;

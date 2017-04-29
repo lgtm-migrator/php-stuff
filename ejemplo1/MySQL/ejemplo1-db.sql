@@ -2,10 +2,10 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 24-04-2017 a las 17:17:44
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-04-2017 a las 00:14:54
 -- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Versión de PHP: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,21 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Estadios`
+-- Estructura de tabla para la tabla `estadios`
 --
 
-CREATE TABLE `Estadios` (
+CREATE TABLE `estadios` (
   `Identificador` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `estadios`
+--
+
+INSERT INTO `estadios` (`Identificador`, `Nombre`) VALUES
+(1, 'Cartagena'),
+(2, 'Barranquilla');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Jugadores`
+-- Estructura de tabla para la tabla `jugadores`
 --
 
-CREATE TABLE `Jugadores` (
+CREATE TABLE `jugadores` (
   `Identificador` int(11) NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Posicion` varchar(10) NOT NULL,
@@ -51,87 +59,57 @@ CREATE TABLE `Jugadores` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Partidos`
+-- Estructura de tabla para la tabla `partidos`
 --
 
-CREATE TABLE `Partidos` (
+CREATE TABLE `partidos` (
   `Identificador` int(11) NOT NULL,
   `ID_Equipo1` int(11) NOT NULL,
   `ID_Equipo2` int(11) NOT NULL,
   `ID_Estadio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tabla1`
---
-
-CREATE TABLE `tabla1` (
-  `id` int(6) UNSIGNED NOT NULL,
-  `nombre` char(30) NOT NULL,
-  `apellido` char(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tabla1`
---
-
-INSERT INTO `tabla1` (`id`, `nombre`, `apellido`) VALUES
-(1, 'amaury', 'ortega');
-
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `Estadios`
+-- Indices de la tabla `estadios`
 --
-ALTER TABLE `Estadios`
+ALTER TABLE `estadios`
   ADD PRIMARY KEY (`Identificador`);
 
 --
--- Indices de la tabla `Jugadores`
+-- Indices de la tabla `jugadores`
 --
-ALTER TABLE `Jugadores`
+ALTER TABLE `jugadores`
   ADD PRIMARY KEY (`Identificador`);
 
 --
--- Indices de la tabla `Partidos`
+-- Indices de la tabla `partidos`
 --
-ALTER TABLE `Partidos`
+ALTER TABLE `partidos`
   ADD PRIMARY KEY (`Identificador`);
-
---
--- Indices de la tabla `tabla1`
---
-ALTER TABLE `tabla1`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `Estadios`
+-- AUTO_INCREMENT de la tabla `estadios`
 --
-ALTER TABLE `Estadios`
+ALTER TABLE `estadios`
+  MODIFY `Identificador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `jugadores`
+--
+ALTER TABLE `jugadores`
   MODIFY `Identificador` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `Jugadores`
+-- AUTO_INCREMENT de la tabla `partidos`
 --
-ALTER TABLE `Jugadores`
+ALTER TABLE `partidos`
   MODIFY `Identificador` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `Partidos`
---
-ALTER TABLE `Partidos`
-  MODIFY `Identificador` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tabla1`
---
-ALTER TABLE `tabla1`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
