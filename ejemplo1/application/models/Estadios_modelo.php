@@ -19,4 +19,25 @@ class Estadios_modelo extends CI_Model {
             $query = $this->db->get_where('estadios', array('Nombre' => $nombre));
             return $query->row_array();
         }
+
+        public function agregarEstadio(){
+            //Carga el helpet url
+            $this->load->helper('url');
+
+            //url_title recibe 3 Parametros
+            //1. String a transformar
+            //2. separador que reemplaza los espacios del primer Parametros
+            //3. TRUE si se quiere convertir todo a minuscula
+
+            //El metodo post de la libreria input cargada por defecto, saca los valores mandados por POST de forma segura
+            $stringPrueba = url_title($this->input->post('Nombre'), 'dash', TRUE);
+
+            $data = array(
+                'Identificador' => $this->input->post('Identificador'),
+                'Nombre' => $stringPrueba
+            );
+
+            //Produce: INSERT INTO estadios (Identificador, Nombre) VALUES ('My title', 'My name')
+            return $this->db->insert('estadios', $data);
+        }
 }

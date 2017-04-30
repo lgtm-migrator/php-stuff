@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-
+$route['estadios/crear'] = 'estadios/crear';
 $route['estadios/(:any)'] = 'estadios/ver/$1';
 $route['estadios'] = 'estadios';
 //$routes compara cualquier peticion usando el string wildcard (:any)

@@ -33,4 +33,37 @@ class Estadios extends CI_Controller {
         $this->load->view('estadios/ver', $data);
         $this->load->view('plantillas/footer');
     }
+
+    public function crear(){
+        //Se cargan las librerias
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        //Se haran 2 cosas en este metodos
+        //1. Verificar si el form fue activado con submit
+        //2. Verificar si la informacion pasada por el form cumple con las validaciones
+
+        $data['titulo'] = 'Agregar nuevo estadio';
+
+        //Parametros:
+        //1. Nombre del field del form a Verificar
+        //2. Nombre del field descriptivo para el usuario, aparece en el mensaje de error
+        //3. Regla de validacion
+        //4. (Opcional) Mensaje de error personalizado
+        $this->form_validation->set_rules('Identificador', 'ID', 'required');
+        $this->form_validation->set_rules('Nombre', 'Nombre', 'required');
+
+        if ($this->form_validation->run() === FALSE){
+            //Si no cumple
+            $this->load->view('plantillas/header', $data);
+            $this->load->view('estadios/agregar');
+            $this->load->view('plantillas/footer');
+        }else{
+            //Si cumple
+            //Usa el metodo agregarEstadio del modelo Estadios_modelo
+            $this->Estadios_modelo->agregarEstadio();
+            //Muestra una vista exitosa
+            $this->load->view('estadios/exito');
+        }
+    }
 }
