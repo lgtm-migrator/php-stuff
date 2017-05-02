@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/php-stuff/ejemplo1/';
+//Usando esta version de base_url, codeigniter detecta la ip correspondiente
+//$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
