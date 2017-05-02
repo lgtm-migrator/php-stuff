@@ -23,6 +23,7 @@ class Estadios_modelo extends CI_Model {
         public function agregarEstadio(){
             //Carga el helpet url
             $this->load->helper('url');
+            $this->load->helper('security');
 
             //url_title recibe 3 Parametros
             //1. String a transformar
@@ -30,10 +31,11 @@ class Estadios_modelo extends CI_Model {
             //3. TRUE si se quiere convertir todo a minuscula
 
             //El metodo post de la libreria input cargada por defecto, saca los valores mandados por POST de forma segura
-            $stringPrueba = url_title($this->input->post('Nombre'), 'dash', TRUE);
+            $stringPrueba = url_title($this->input->post('Nombre', TRUE), 'dash', TRUE);
+            $stringPrueba = xss_clean($stringPrueba);
 
             $data = array(
-                'Identificador' => $this->input->post('Identificador'),
+                'Identificador' => $this->input->post('Identificador', TRUE),
                 'Nombre' => $stringPrueba
             );
 
