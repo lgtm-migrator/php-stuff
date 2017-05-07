@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2017 a las 21:14:26
+-- Tiempo de generación: 08-05-2017 a las 01:09:01
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -40,7 +40,7 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`Identificador`, `Nombre`, `Division`, `N_Partidos_Jugados`, `N_Partidos_Ganados`, `N_Partidos_Perdidos`) VALUES
-(4, 'Israel', 1, 3, 3, 0),
+(4, 'Israel', 1, 3, 4, 0),
 (5, 'Países Bajos', 1, 3, 2, 1),
 (6, 'Corea del Sur', 1, 3, 1, 2),
 (7, 'China Taipei', 1, 3, 0, 3),
@@ -166,9 +166,16 @@ INSERT INTO `partidos` (`Identificador`, `Equipo1`, `Equipo2`, `Puntos_Equipo1`,
 
 CREATE TABLE `usuarios` (
   `Identificador` int(11) NOT NULL,
-  `Nombre` text NOT NULL,
+  `Correo` text NOT NULL,
   `Contra` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`Identificador`, `Correo`, `Contra`) VALUES
+(1, 'beisbol@seguro.com', '4d24200a7ba369d7cdd9904836394323faed4ac8');
 
 --
 -- Índices para tablas volcadas
@@ -232,7 +239,7 @@ ALTER TABLE `partidos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Identificador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Identificador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
