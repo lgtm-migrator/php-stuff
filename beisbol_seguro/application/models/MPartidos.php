@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class MPartidos extends CI_Model {
         //Constructor, aqui se carga la base de datos para que un controlador
         //pueda invocar MPartidos y usar sus metodos

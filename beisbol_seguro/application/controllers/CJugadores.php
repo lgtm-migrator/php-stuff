@@ -1,5 +1,5 @@
 <?php
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class CJugadores extends CI_Controller {
 
     //Constructor

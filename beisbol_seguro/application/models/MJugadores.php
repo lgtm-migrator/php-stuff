@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class MJugadores extends CI_Model {
         public function __construct(){
                 //Carga la base de datos y la hace accesible por el objeto $this->db
