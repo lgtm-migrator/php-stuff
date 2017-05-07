@@ -3,5 +3,5 @@
         <title>Pagina plantillas</title>
     </head>
     <body>
-        <h2><?php echo $titulo; ?></h2>
+        <h2>Beisbol seguro</h2>
 <!--Fin de header-->
