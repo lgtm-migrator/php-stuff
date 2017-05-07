@@ -7,12 +7,14 @@ class MJugadores extends CI_Model {
 
         public function get_lanzadores(){
             $this->db->where('Lanzador', 1);
+            $this->db->ORDER_BY('Efectividad', 'DESC');
             $query = $this->db->get('jugadores');
             return $query->result_array();
         }
 
         public function get_bateadores(){
             $this->db->where('Lanzador', 0);
+            $this->db->ORDER_BY('Promedio_bateo', 'DESC');
             $query = $this->db->get('jugadores');
             return $query->result_array();
         }
