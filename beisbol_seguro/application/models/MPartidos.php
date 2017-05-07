@@ -11,6 +11,7 @@ class MPartidos extends CI_Model {
             //Query Builder se encarga de verificar $nombre
 
             //Nombre de la tabla a obtener
+            $this->db->order_by('Identificador','DESC');
             $query = $this->db->get('partidos');
             //Retorna los resultados como un array
             return $query->result_array();

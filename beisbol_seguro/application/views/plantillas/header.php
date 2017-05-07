@@ -9,7 +9,7 @@
         <br>
 
         <h5><a href="<?php echo site_url('equipos');?>">Equipos</a></h5>
-        <h5><a href="<?php //echo site_url('jugadores');?>">Jugadores</a></h5>
+        <h5><a href="<?php echo site_url('jugadores');?>">Jugadores</a></h5>
         <h5><a href="<?php echo site_url('partidos');?>">Partidos</a></h5>
 
         <hr>
