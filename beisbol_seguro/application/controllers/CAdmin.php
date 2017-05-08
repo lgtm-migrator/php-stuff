@@ -34,8 +34,8 @@ class CAdmin extends CI_Controller {
         }
         //Han enviado informacion?
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('correo', 'Correo', 'required|valid_email', 'El correo ingresado no es un correo');
-        $this->form_validation->set_rules('contra', 'Contraseña', 'required|min_length[4]', 'La contraseña no cumple nuestros estandares');
+        $this->form_validation->set_rules('correo', 'Correo', 'required|valid_email', array('required' => '"El campo {field} esta vacio."','valid_email' => '"Solo se aceptan correos"'));
+        $this->form_validation->set_rules('contra', 'Contraseña', 'required|min_length[4]', array('required' => '"El campo {field} esta vacio."','min_length' => '"El campo {field} requiere minimo 2 caracteres"'));
 
         if ($this->form_validation->run() !== false) {
             //Valido correctamente. Obtener de la BD los credenciales
@@ -88,7 +88,7 @@ class CAdmin extends CI_Controller {
                     );
                     $this->MAdmin->crearPartido($data);
                     redirect('admin/crear-partidos');
-                }                
+                }
             }
         }
 
