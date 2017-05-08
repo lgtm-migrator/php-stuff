@@ -27,12 +27,13 @@
 	endforeach;
 
 ?>
-<nav><ul>
-<li><a href="<?php echo site_url('admin/crear-partidos/1');?>">Division 1</a></li>
-<li><a href="<?php echo site_url('admin/crear-partidos/2');?>">Division 2</a></li>
-<li><a href="<?php echo site_url('admin/crear-partidos/3');?>">Division 3</a></li>
-<li><a href="<?php echo site_url('admin/crear-partidos/4');?>">Division 4</a></li>
-</ul></nav>
+<h4>Escoga la division</h4>
+<nav>
+	<a href="<?php echo site_url('admin/crear-partidos/1');?>">Division 1</a> |
+	<a href="<?php echo site_url('admin/crear-partidos/2');?>">Division 2</a> |
+	<a href="<?php echo site_url('admin/crear-partidos/3');?>">Division 3</a> |
+	<a href="<?php echo site_url('admin/crear-partidos/4');?>">Division 4</a> |
+</nav><br>
 
 <?= form_label('Equipo 1:','equipo1') ?>
 <?= form_dropdown('equipo1',$equipo1) ?>

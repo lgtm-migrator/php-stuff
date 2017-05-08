@@ -4,7 +4,6 @@
     <tr>
         <th>Identificador</th>
         <th>Nombre</th>
-        <th>Posicion</th>
         <th>N_hits</th>
         <th>Veces plato</th>
         <th>Carreras Limpias</th>
@@ -17,7 +16,6 @@
         <?php
         echo '<td>'.$jugador['Identificador'].'</td>';
         echo '<td>'.$jugador['Nombre'].'</td>';
-        echo '<td>'.$jugador['Posicion'].'</td>';
         echo '<td>'.$jugador['N_hits'].'</td>';
         echo '<td>'.$jugador['Veces_plato'].'</td>';
         echo '<td>'.$jugador['Carreras_limpias'].'</td>';
