@@ -49,6 +49,7 @@ class CAdmin extends CI_Controller {
                 $_SESSION['username'] = $this->input->post('correo');
                 //Metodo index donde esta la pagina secreta
                 redirect('admin');
+                //pagina auth
             }
         }
         //Carga el login
