@@ -19,8 +19,11 @@ class MAdmin extends CI_Model {
     }
 
     public function buscar_jugador($idBusqueda){
-        $this->db->like('Identificador', intval($idBusqueda));
-        $this->db->or_like('Nombre', $idBusqueda);
+        $this->db->like('Nombre', $idBusqueda);
+        if(is_numeric($idBusqueda)){
+            //Si es un numero
+            $this->db->or_like('Identificador', intval($idBusqueda));
+        }
         $query = $this->db->get('jugadores');
         if ($query->num_rows() > 0){
             return $query->result_array();
