@@ -48,14 +48,30 @@ class CAdmin extends CI_Controller {
                 //Si tiene una cuenta en el app se crea la variable username
                 $_SESSION['username'] = $this->input->post('correo');
                 //Metodo index donde esta la pagina secreta
-                redirect('admin');
+                //redirect('admin');
                 //pagina auth
+                redirect('admin/auth');
             }
         }
         //Carga el login
         $this->load->view('plantillas/header');
         $this->load->view('admin/login');
         $this->load->view('plantillas/footer');
+    }
+
+    public function auth(){
+        //Aqui verificar que tenga sesion
+        if (!isset($_SESSION['username'])){
+            //No se ha logeado
+            redirect('admin/login');
+        }else {
+            $this->load->library('duo');
+            
+            $this->load->view('admin/header');
+            $this->load->view('admin/auth');
+            $this->load->view('plantillas/footer');
+        }
+
     }
 
     public function logout(){
