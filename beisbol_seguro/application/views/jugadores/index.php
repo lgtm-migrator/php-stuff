@@ -10,5 +10,8 @@
         padding: 5px;
     }
 </style>
-<h5><a href="<?php echo site_url('jugadores/bateadores');?>">Bateadores</a></h5>
-<h5><a href="<?php echo site_url('jugadores/lanzadores');?>">Lanzadores</a></h5>
+
+<nav>
+    <a href="<?php echo site_url('jugadores/bateadores');?>">Bateadores</a> |
+    <a href="<?php echo site_url('jugadores/lanzadores');?>">Lanzadores</a> |
+<nav>
