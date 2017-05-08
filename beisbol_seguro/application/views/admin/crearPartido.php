@@ -55,5 +55,6 @@
 
 <div class="errores">
 	<?= $error ?>
+	<?= $error1 ?>
 	<?= validation_errors(); ?>
 </div>

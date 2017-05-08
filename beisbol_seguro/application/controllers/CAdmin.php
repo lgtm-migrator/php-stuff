@@ -65,6 +65,7 @@ class CAdmin extends CI_Controller {
     public function crearPartidos($num = 1){
         //Si ya esta logeado
         $data['error']='';
+        $data['error1']='';
         $this->load->library('form_validation');
         $this->form_validation->set_rules('puntos_Equipo1', 'Puntos Equipo 1', 'required|max_length[2]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
         $this->form_validation->set_rules('puntos_Equipo2', 'Puntos Equipo 2', 'required|max_length[2]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
@@ -74,15 +75,20 @@ class CAdmin extends CI_Controller {
             if($this->input->post('equipo1')===$this->input->post('equipo2')){
                 $data['error'] = 'No puede jugar un equipo contra el mismo.';
             }else{
-                $data = array(
-                'equipo1' => $this->security->xss_clean($this->input->post('equipo1')),
-                'equipo2' => $this->security->xss_clean($this->input->post('equipo2')),
-                'puntos_Equipo1' => $this->security->xss_clean($this->input->post('puntos_Equipo1')),
-                'puntos_Equipo2' => $this->security->xss_clean($this->input->post('puntos_Equipo2')),
-                'estadio' => $this->security->xss_clean($this->input->post('estadio')),
-                );
-                $this->MAdmin->crearPartido($data);
-                redirect('admin/crear-partidos');
+                $limitePartido = $this->MAdmin->validarCinco($this->input->post('equipo1'),$this->input->post('equipo2'));
+                if($limitePartido !== NULL){
+                    $data['error1'] = 'El equipo '.$limitePartido.' ha llegado al limite de partidos jugados.';
+                }else{
+                    $data = array(
+                    'equipo1' => $this->security->xss_clean($this->input->post('equipo1')),
+                    'equipo2' => $this->security->xss_clean($this->input->post('equipo2')),
+                    'puntos_Equipo1' => $this->security->xss_clean($this->input->post('puntos_Equipo1')),
+                    'puntos_Equipo2' => $this->security->xss_clean($this->input->post('puntos_Equipo2')),
+                    'estadio' => $this->security->xss_clean($this->input->post('estadio')),
+                    );
+                    $this->MAdmin->crearPartido($data);
+                    redirect('admin/crear-partidos');
+                }                
             }
         }
 
