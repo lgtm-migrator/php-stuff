@@ -4,7 +4,7 @@
     </head>
     <body>
         <h2><a href="<?php echo site_url();?>">Beisbol Seguro</a></h2>
-        <br>
+        
         <h5><a href="<?php echo site_url('admin');?>">Admin</a></h5>
         <nav>
             <a href="<?php echo site_url('equipos');?>">Equipos</a> |
