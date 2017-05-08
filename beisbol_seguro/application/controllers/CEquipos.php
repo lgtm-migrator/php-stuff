@@ -21,6 +21,10 @@ class CEquipos extends CI_Controller {
 	}
 
     public function division($num = 1){
+        if($num != 1 and $num != 2 and $num != 3 and $num != 4){
+            //Se intenta pasar de listo
+            redirect('equipos');
+        }
         $this->load->view('plantillas/header');
         $data['division'] = $num;
         $data['equipos'] = $this->MEquipos->get_equipos($num);

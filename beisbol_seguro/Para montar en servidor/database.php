@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'beisbolseguro',
-	'password' => 'aroc123',
+	'password' => 'O4nyv*wkS6"_y*h"r=tq}~|f!sq2J%}=5)wsK{u|2m3L3vGKhqwYSs0j\4[u~m+n',
 	'database' => 'liga_de_beisbol',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
