@@ -154,11 +154,11 @@ class CAdmin extends CI_Controller {
             }
 
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('n_hits', 'Numero de Hits', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
-            $this->form_validation->set_rules('veces_plato', 'Turnos al Bate', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+            $this->form_validation->set_rules('n_hits', 'Numero de Hits', 'required|max_length[3]|is_natural_no_zero', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural_no_zero' => '"El campo {field} acepta solo numeros naturales"'));
+            $this->form_validation->set_rules('veces_plato', 'Turnos al Bate', 'required|max_length[3]|is_natural_no_zero', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural_no_zero' => '"El campo {field} acepta solo numeros naturales"'));
             if($this->MJugadores->esLanzador($id)){
-                $this->form_validation->set_rules('carreras_limpias', 'Carreras Limpias', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
-                $this->form_validation->set_rules('n_innings', 'Innings Lanzados', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+                $this->form_validation->set_rules('carreras_limpias', 'Carreras Limpias', 'required|max_length[3]|is_natural_no_zero', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural_no_zero' => '"El campo {field} acepta solo numeros naturales"'));
+                $this->form_validation->set_rules('n_innings', 'Innings Lanzados', 'required|max_length[3]|is_natural_no_zero', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural_no_zero' => '"El campo {field} acepta solo numeros naturales"'));
             }
 
             if ($this->form_validation->run() !== false) {
@@ -170,7 +170,7 @@ class CAdmin extends CI_Controller {
                     'n_innings' => $this->security->xss_clean($this->input->post('n_innings')),
                     );
                     $this->MJugadores->updateJugador($id,$data);
-                    //redirect('admin/editar-jugador');
+                    redirect('admin/editar-jugador');
                 }
 
             $this->load->view('admin/header');
