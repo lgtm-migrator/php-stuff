@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['admin/editar-jugado'] = 'CAdmin/EditarJugador';
+$route['admin/editar-jugador'] = 'CAdmin/EditarJugador';
 $route['admin/crear-partidos'] = 'CAdmin/CrearPartidos';
 $route['admin/logout'] = 'CAdmin/logout';
 $route['admin/login'] = 'CAdmin/login';
