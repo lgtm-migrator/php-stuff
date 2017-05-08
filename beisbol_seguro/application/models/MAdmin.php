@@ -27,4 +27,46 @@ class MAdmin extends CI_Model {
         }
         return false;
     }
+
+    public function crearPartido($data){
+	    $this->db->insert('partidos',array(
+		'Identificador' => NULL,
+		'Equipo1' => $data['equipo1'],
+		'Equipo2' => $data['equipo2'],
+		'Puntos_Equipo1' => $data['puntos_Equipo1'],
+		'Puntos_Equipo2' => $data['puntos_Equipo2'],
+		'Estadio' => $data['estadio'],
+		));
+	$this->db->set('N_Partidos_Jugados','N_Partidos_Jugados+1',FALSE);
+	$this->db->where('Nombre',$data['equipo1']);
+	$this->db->update('equipos');
+	$this->db->set('N_Partidos_Jugados','N_Partidos_Jugados+1',FALSE);
+	$this->db->where('Nombre',$data['equipo2']);
+	$this->db->update('equipos');
+		if($data['puntos_Equipo1']>$data['puntos_Equipo2']){
+			$this->db->set('N_Partidos_Ganados','N_Partidos_Ganados+1',FALSE);
+			$this->db->where('Nombre',$data['equipo1']);
+			$this->db->update('equipos');
+			$this->db->set('N_Partidos_Perdidos','N_Partidos_Perdidos+1',FALSE);
+			$this->db->where('Nombre',$data['equipo2']);
+			$this->db->update('equipos');
+		}else{
+			if($data['puntos_Equipo1']<$data['puntos_Equipo2']){
+				$this->db->set('N_Partidos_Ganados','N_Partidos_Ganados+1',FALSE);
+				$this->db->where('Nombre',$data['equipo2']);
+				$this->db->update('equipos');
+				$this->db->set('N_Partidos_Perdidos','N_Partidos_Perdidos+1',FALSE);
+				$this->db->where('Nombre',$data['equipo1']);
+				$this->db->update('equipos');
+			}
+		}
+	}
+
+	public function listaEstadios(){
+		$this->db->select('Estadio');
+		$this->db->distinct();
+		$query = $this->db->get('partidos');
+		return $query->result_array();
+	}
+
 }

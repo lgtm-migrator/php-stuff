@@ -7,6 +7,8 @@ class CAdmin extends CI_Controller {
         parent::__construct();
         //Carga el modelo para poder usar sus metodos
         $this->load->model('MAdmin');
+        $this->load->model('MJugadores');
+        $this->load->model('MEquipos');
         //Para guardar variables en sesion
         session_start();
     }
@@ -58,6 +60,39 @@ class CAdmin extends CI_Controller {
     public function logout(){
         session_destroy();
         redirect('admin');
+    }
+
+    public function crearPartidos($num = 1){
+        //Si ya esta logeado
+        $data['error']='';
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('puntos_Equipo1', 'Puntos Equipo 1', 'required|max_length[2]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+        $this->form_validation->set_rules('puntos_Equipo2', 'Puntos Equipo 2', 'required|max_length[2]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+
+        if ($this->form_validation->run() !== false) {
+            //Valido correctamente. Obtener de la BD los credenciales
+            if($this->input->post('equipo1')===$this->input->post('equipo2')){
+                $data['error'] = 'No puede jugar un equipo contra el mismo.';
+            }else{
+                $data = array(
+                'equipo1' => $this->security->xss_clean($this->input->post('equipo1')),
+                'equipo2' => $this->security->xss_clean($this->input->post('equipo2')),
+                'puntos_Equipo1' => $this->security->xss_clean($this->input->post('puntos_Equipo1')),
+                'puntos_Equipo2' => $this->security->xss_clean($this->input->post('puntos_Equipo2')),
+                'estadio' => $this->security->xss_clean($this->input->post('estadio')),
+                );
+                $this->MAdmin->crearPartido($data);
+                redirect('admin/crear-partidos');
+            }
+        }
+
+        $data['division'] = $num;
+        $data['equipos'] = $this->MEquipos->listaEquipos($num);
+        $data['estadios'] = $this->MAdmin->listaEstadios();
+        $this->load->view('admin/header');
+        $this->load->view('admin/crearPartido',$data);
+        $this->load->view('plantillas/footer');
+
     }
 
     public function editarJugador(){

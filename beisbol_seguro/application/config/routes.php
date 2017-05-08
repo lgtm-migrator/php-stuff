@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['admin/editar-jugador/(:any)'] = 'CAdmin/editarJugadorSegundo/$1';
 $route['admin/editar-jugador'] = 'CAdmin/editarJugador';
+$route['admin/crear-partidos/(:any)'] = 'CAdmin/crearPartidos/$1';
 $route['admin/crear-partidos'] = 'CAdmin/crearPartidos';
 $route['admin/logout'] = 'CAdmin/logout';
 $route['admin/login'] = 'CAdmin/login';

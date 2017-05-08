@@ -20,4 +20,11 @@ class MEquipos extends CI_Model {
         return $query->result_array();
     }
 
+    public function listaEquipos($division){
+        $this->db->select('Nombre');
+        $this->db->where('Division', $division);
+        $query = $this->db->get('equipos');
+        return $query->result_array();
+    }
+
 }

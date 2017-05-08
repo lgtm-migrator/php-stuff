@@ -11,10 +11,12 @@
     }
 </style>
 
-<h5><a href="<?php echo site_url('equipos/1');?>">Division 1</a></h5>
-<h5><a href="<?php echo site_url('equipos/2');?>">Division 2</a></h5>
-<h5><a href="<?php echo site_url('equipos/3');?>">Division 3</a></h5>
-<h5><a href="<?php echo site_url('equipos/4');?>">Division 4</a></h5>
+<nav><ul>
+<li><a href="<?php echo site_url('equipos/1');?>">Division 1</a></li>
+<li><a href="<?php echo site_url('equipos/2');?>">Division 2</a></li>
+<li><a href="<?php echo site_url('equipos/3');?>">Division 3</a></li>
+<li><a href="<?php echo site_url('equipos/4');?>">Division 4</a></li>
+</nav></ul>
 
 <h3>Equipos</h3>
 <table>
