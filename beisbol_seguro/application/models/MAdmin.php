@@ -69,4 +69,23 @@ class MAdmin extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function validarCinco($equipo1,$equipo2){
+
+		$this->db->where('Nombre',$equipo1);
+		$query = $this->db->get('equipos');
+		if($query->num_rows() > 0){
+			if($query->result()[0]->N_Partidos_Jugados == 5){
+			return $equipo1;			
+			}else{
+				$this->db->where('Nombre',$equipo2);
+				$query = $this->db->get('equipos');
+				if($query->result()[0]->N_Partidos_Jugados == 5){
+					return $equipo2;	
+				}
+			}
+		} 
+				
+		return NULL;
+	}
+
 }
