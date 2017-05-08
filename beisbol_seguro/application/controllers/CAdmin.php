@@ -63,29 +63,30 @@ class CAdmin extends CI_Controller {
     public function editarJugador(){
         //Si ya esta logeado
         if (isset($_SESSION['username'])){
+            //header
+            $this->load->view('admin/header');
+            //Pagina principal para buscar
+            $this->load->view('admin/editarJugadorPrincipal');
+
             //Han enviado informacion?
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('idBusqueda', 'Campo anterior', 'required', array('required' => 'error personalizado {field}'));
+            $this->form_validation->set_rules('idBusqueda', 'Campo anterior', 'required', array('required' => '{field} debe ser llenado'));
             if ($this->form_validation->run() !== false) {
                 //Valido correctamente. Obtengo de la base de datos
                 $respuesta = $this->MAdmin->buscar_jugador(
                     $this->security->xss_clean($this->input->post('idBusqueda'))
                 );
-                
-                $this->load->view('admin/header');
+
                 $data['jugadores'] = $respuesta;
-                $this->load->view('admin/editarJugadorPrincipal', $data);
-                $this->load->view('plantillas/footer');
-                // if ($respuesta !== FALSE){
-                //     //Existen jugdadores con ese nombre o ID
-                //
-                // }else {
-                //     //No existen jugadores con ese nombre o ID
-                // }
+
+                if ($respuesta !== FALSE){
+                    //Existen jugdadores con ese nombre o ID
+                    $this->load->view('admin/editarJugadorBusqueda', $data);
+                }else{
+                    $this->load->view('admin/mensaje');
+                }
             }
-            //Pagina principal para buscar
-            $this->load->view('admin/header');
-            $this->load->view('admin/editarJugadorPrincipal');
+            //footer
             $this->load->view('plantillas/footer');
         }else {
             //No se ha logeado
