@@ -170,7 +170,7 @@ class CAdmin extends CI_Controller {
                     'n_innings' => $this->security->xss_clean($this->input->post('n_innings')),
                     );
                     $this->MJugadores->updateJugador($id,$data);
-                    //redirect('admin/editar-jugador');
+                    redirect('admin/editar-jugador');
                 }
 
             $this->load->view('admin/header');
