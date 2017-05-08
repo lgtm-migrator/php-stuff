@@ -40,7 +40,7 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`Identificador`, `Nombre`, `Division`, `N_Partidos_Jugados`, `N_Partidos_Ganados`, `N_Partidos_Perdidos`) VALUES
-(4, 'Israel', 1, 3, 4, 0),
+(4, 'Israel', 1, 4, 4, 0),
 (5, 'Países Bajos', 1, 4, 2, 2),
 (6, 'Corea del Sur', 1, 4, 2, 2),
 (7, 'China Taipei', 1, 3, 0, 3),
