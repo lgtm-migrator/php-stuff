@@ -17,4 +17,14 @@ class MAdmin extends CI_Model {
         }
         return false;
     }
+
+    public function buscar_jugador($idBusqueda){
+        $this->db->like('Identificador', intval($idBusqueda));
+        $this->db->or_like('Nombre', $idBusqueda);
+        $query = $this->db->get('jugadores');
+        if ($query->num_rows() > 0){
+            return $query->result_array();
+        }
+        return false;
+    }
 }
