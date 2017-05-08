@@ -147,10 +147,32 @@ class CAdmin extends CI_Controller {
         //Si ya esta logeado
         if (isset($_SESSION['username'])){
             //Pagina principal para buscar
+
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('n_hits', 'Numero de Hits', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+            $this->form_validation->set_rules('veces_plato', 'Turnos al Bate', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+            if($this->MJugadores->esLanzador($id)){
+                $this->form_validation->set_rules('carreras_limpias', 'Carreras Limpias', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));
+                $this->form_validation->set_rules('n_innings', 'Innings Lanzados', 'required|max_length[3]|is_natural', array('required' => '"El campo {field} esta vacio."','max_length' => '"El campo {field} acepta maximo 2 caracteres"','is_natural' => '"El campo {field} acepta solo numeros naturales"'));    
+            }
+            
+            if ($this->form_validation->run() !== false) {
+                //Valido correctamente. Obtener de la BD los credenciales
+                    $data = array(
+                    'n_hits' => $this->security->xss_clean($this->input->post('n_hits')),
+                    'veces_plato' => $this->security->xss_clean($this->input->post('veces_plato')),
+                    'carreras_limpias' => $this->security->xss_clean($this->input->post('carreras_limpias')),
+                    'n_innings' => $this->security->xss_clean($this->input->post('n_innings')), 
+                    );
+                    var_dump($id);
+                    $this->MJugadores->updateJugador($id,$data);
+                    redirect('admin/editar-jugador');
+                }
+            
             $this->load->view('admin/header');
-
-            //CODE
-
+            $data['id'] = $id;
+            $data['jugador'] = $this->MJugadores->get_jugadoresQuery($id);
+            $this->load->view('admin/editarJugador',$data);
             $this->load->view('plantillas/footer');
         }else {
             //No se ha logeado
