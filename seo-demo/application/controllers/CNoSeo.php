@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class no_seo extends CI_Controller {
+class CNoSeo extends CI_Controller {
 	public function index(){
 		//Header
 		$this->load->view('plantillas/header');

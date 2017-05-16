@@ -49,9 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['traducir/(:any)'] = 'traducir/index/$1';
-$route['no-seo'] = 'no_seo';
-$route['with-seo'] = 'seo';
+$route['traducir/(:any)'] = 'CTraducir/index/$1';
+$route['noseo'] = 'CNoSeo';
+$route['seo'] = 'CSeo';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
