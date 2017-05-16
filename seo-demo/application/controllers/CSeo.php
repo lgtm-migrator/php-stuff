@@ -3,7 +3,7 @@
 Crea páginas principalmente para los usuarios, no para los motores de búsqueda
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
-class seo extends CI_Controller {
+class CSeo extends CI_Controller {
 	public function index(){
 		// Variables para SEO
 		$data['titulo'] = 'SEO para dummies dinamico';
